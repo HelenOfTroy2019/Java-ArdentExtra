@@ -1,0 +1,15 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class mapDemo {
+
+	public static void main(String[] args) {
+		Map<String, Integer> m = new HashMap<String, Integer>();
+		
+		m.put("Key1", 314);
+		m.put("asdfghjk", 88);
+		System.out.println(m.get("Key1"));
+		m.put("Key1", m.get("Key1"));
+	}
+
+}
