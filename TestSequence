@@ -1,0 +1,62 @@
+class Sequence {
+	private int aList[];
+	Sequence () {
+		aList = new int[10];
+	}
+	Sequence (int nTotal) {
+		aList = new int[nTotal];
+	}
+	public void createRandomList() {
+		for (int i=0; i<aList.length; i++) {
+			aList[i] = (int)(Math.random()*100);
+		}
+	}
+
+	public void printList() {
+		for (int i=0; i<aList.length; i++) {
+			System.out.print(aList[i]+" ");
+			if (aList[i]<10) System.out.print(" ");
+			if (i%10==9)System.out.println();
+		}
+			
+	}
+	public void createArithmeticSequence(int nFirst, int nTotal, int nDiff) {
+		aList = new int[nTotal]; //re-allocate space
+		//for (int i=1; i<=nTotal; i++) {
+		//	aList[i-1] = nFirst + (i-1)*nDiff;
+		aList[0] = nFirst;
+		for(int i=2; i<=nTotal; i++) {
+			aList[i-1] = aList[i-2] + nDiff;
+		}
+	}
+	public int sum() {
+		int sum=0;
+		for(int i=0; i<aList.length; i++) {
+			sum = sum+aList[i];
+		}
+		return sum;
+	}
+	public int sum(int n) {
+		int sum=0;
+		if (n>aList.length) return -1;
+		for (int i=0; i<n; i++) {
+			sum += aList[i];
+		}
+		return sum;
+	}
+}
+
+public class TestSequence {
+
+	public static void main(String[] args) {
+		Sequence s = new Sequence(30);
+		//s.createRandomList();	
+		s.createArithmeticSequence(2, 50, 2);
+		s.printList();
+		int sum = s.sum(106);
+		if (sum != -1)
+			System.out.println("Series = "+ s.sum(106));
+		else
+			System.out.println("ERROR!");
+	}
+}
